@@ -276,6 +276,10 @@ build_ordered_ids() {
 info "=== Docker Autostart ==="
 echo
 
+info "Waiting 2 minutes before starting containers..."
+sleep 120
+echo
+
 SORTED_IDS=$(mktemp)
 # Cleanup on exit — POSIX compatible
 trap 'rm -f "$SORTED_IDS"' EXIT INT TERM
