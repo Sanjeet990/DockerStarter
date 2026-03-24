@@ -18,12 +18,4 @@ WORKDIR /app
 COPY autostart.sh .
 RUN chmod +x autostart.sh
 
-# Run as a non-root user for safety.
-# The user must be in the 'docker' group so it can reach the socket.
-RUN addgroup -S starter \
- && adduser  -S -G starter starter \
- && addgroup starter docker
-
-USER starter
-
 ENTRYPOINT ["sh", "/app/autostart.sh"]
